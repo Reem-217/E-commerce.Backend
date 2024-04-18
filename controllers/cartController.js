@@ -1,4 +1,4 @@
-const asyncHandler = require('express-async-handler');
+ const asyncHandler = require('express-async-handler');
 const ApiError = require('../utils/ApiError');
 
 const Product = require('../models/productModel');
@@ -150,8 +150,7 @@ exports.updateCartItemQuantity = asyncHandler(async (req, res, next) => {
 exports.applyCoupon = asyncHandler(async (req, res, next) => {
   // 1) Get coupon based on coupon name
   const coupon = await Coupon.findOne({
-    name: req.body.coupon,
-    expire: { $gt: Date.now() },
+    name: req.body.coupon
   });
 
   if (!coupon) {
